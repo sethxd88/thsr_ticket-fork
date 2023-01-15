@@ -1,5 +1,9 @@
 # 高鐵訂票小幫手
 
+修改這兩個檔案：
+1. thsr_ticket/controller/confirm_ticket_flow.py
+2. thsr_ticket/controller/first_page_flow.py
+
 **!!--純研究用途，請勿用於不當用途--!!**
 
 此程式提供另一種輕便的方式訂購高鐵車票，操作介面為命令列介面。相較於使用網頁訂購，本程式因為省卻了渲染網頁介面的時間，只保留最核心的訂購功能，因此能省下大量等待的時間。
