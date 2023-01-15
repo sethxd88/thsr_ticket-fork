@@ -52,9 +52,9 @@ class FirstPageFlow:
             self.record
             and (
                 station := {
-                    '啟程': 2,
+                    '啟程': 2, ### 出發站改這裡
                     # '啟程': self.record.start_station,
-                    '到達': 7,
+                    '到達': 7, ### 到達站改這裡
                     # '到達': self.record.dest_station,
                 }.get(travel_type)
             )
@@ -74,7 +74,7 @@ class FirstPageFlow:
         today = date.today()
         last_avail_date = today + timedelta(days=DAYS_BEFORE_BOOKING_AVAILABLE)
         # print(f'選擇{date_type}日期（{today}~{last_avail_date}）（預設為今日）：')
-        return '2023-01-20'
+        return '2023-01-20' ### 日期改這裡
         # return input() or str(today)
 
     def select_time(self, time_type: str, default_value: int = 10) -> str:
@@ -98,8 +98,7 @@ class FirstPageFlow:
             # print(f'{idx+1}. {t_str[:-2]}:{t_str[-2:]}')
 
         # selected_opt = int(input(f'輸入選擇（預設：{default_value}）：') or default_value)
-        selected_opt = int(31)
-        # selected_opt = int(default_value)
+        selected_opt = int(31) ### 出發時間改這裡，先開上一句看時間，31 大概是20:30
         return AVAILABLE_TIME_TABLE[selected_opt-1]
 
     def select_ticket_num(self, ticket_type: TicketType, default_ticket_num: int = 1) -> str:
@@ -124,14 +123,14 @@ class FirstPageFlow:
 
         print(f'選擇{ticket_type_name}票數（0~{MAX_TICKET_NUM}）（預設：{default_ticket_num}）')
         # ticket_num = int(input() or default_ticket_num)
-        ticket_num = int(1)
+        ticket_num = int(1) ### 設定成是成人票
         return f'{ticket_num}{ticket_type.value}'
 
 
 def _parse_seat_prefer_value(page: BeautifulSoup) -> str:
     options = page.find(**BOOKING_PAGE["seat_prefer_radio"])
     preferred_seat = options.find_next(selected='selected')
-    return preferred_seat.attrs['value']
+    return preferred_seat.attrs['value'] ## 應該是可以選擇要靠窗
 
 
 def _parse_types_of_trip_value(page: BeautifulSoup) -> int:

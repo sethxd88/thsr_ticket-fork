@@ -33,10 +33,10 @@ class ConfirmTicketFlow:
             return personal_id
 
         # return input(f'輸入身分證字號：\n')
-        return ''
+        return '' ## 身份證字號改這裡
 
     def set_phone_num(self) -> str:
-        return ''
+        return '' ## 不想輸入手機
         # if self.record and (phone_num := self.record.phone):
         #     return phone_num
         #
