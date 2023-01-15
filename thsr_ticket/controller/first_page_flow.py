@@ -52,9 +52,11 @@ class FirstPageFlow:
             self.record
             and (
                 station := {
-                    '啟程': 2, ### 出發站改這裡
+                    # '啟程': 2, ### 出發站改這裡
+                    '啟程': 7, ### 出發站改這裡
                     # '啟程': self.record.start_station,
-                    '到達': 7, ### 到達站改這裡
+                    # '到達': 7, ### 到達站改這裡
+                    '到達': 2, ### 到達站改這裡
                     # '到達': self.record.dest_station,
                 }.get(travel_type)
             )
@@ -74,13 +76,12 @@ class FirstPageFlow:
         today = date.today()
         last_avail_date = today + timedelta(days=DAYS_BEFORE_BOOKING_AVAILABLE)
         # print(f'選擇{date_type}日期（{today}~{last_avail_date}）（預設為今日）：')
-        return '2023-01-20' ### 日期改這裡
+        return '2023-01-29' ### 日期改這裡
         # return input() or str(today)
 
     def select_time(self, time_type: str, default_value: int = 10) -> str:
         if self.record and (
             time_str := {
-                # '啟程': self.record.outbound_time,
                 '啟程': self.record.outbound_time,
                 '回程': None,
             }.get(time_type)
@@ -95,7 +96,7 @@ class FirstPageFlow:
             elif t_int != 1230 and t_str[-1] == "P":
                 t_int += 1200
             t_str = str(t_int)
-            # print(f'{idx+1}. {t_str[:-2]}:{t_str[-2:]}')
+            # print(f'{idx+1}. {t_str[:-2]}:{t_str[-2:]}') ## 要開這句才能看時間
 
         # selected_opt = int(input(f'輸入選擇（預設：{default_value}）：') or default_value)
         selected_opt = int(31) ### 出發時間改這裡，先開上一句看時間，31 大概是20:30
@@ -130,7 +131,8 @@ class FirstPageFlow:
 def _parse_seat_prefer_value(page: BeautifulSoup) -> str:
     options = page.find(**BOOKING_PAGE["seat_prefer_radio"])
     preferred_seat = options.find_next(selected='selected')
-    return preferred_seat.attrs['value'] ## 應該是可以選擇要靠窗
+    # return preferred_seat.attrs['value'] ## 應該是可以選擇要靠窗
+    return 1
 
 
 def _parse_types_of_trip_value(page: BeautifulSoup) -> int:
