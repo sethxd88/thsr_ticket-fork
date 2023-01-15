@@ -1,8 +1,12 @@
-# 高鐵訂票小幫手
+Credit belong to [BreezeWhite](https://github.com/BreezeWhite/THSR-Ticket.git)
 
-修改這兩個檔案：
+- Note for self
+
+主要修改這兩個檔案：
 1. thsr_ticket/controller/confirm_ticket_flow.py
 2. thsr_ticket/controller/first_page_flow.py
+
+# 高鐵訂票小幫手
 
 **!!--純研究用途，請勿用於不當用途--!!**
 
