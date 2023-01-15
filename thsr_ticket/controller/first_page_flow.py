@@ -52,8 +52,10 @@ class FirstPageFlow:
             self.record
             and (
                 station := {
-                    '啟程': self.record.start_station,
-                    '到達': self.record.dest_station,
+                    '啟程': 2,
+                    # '啟程': self.record.start_station,
+                    '到達': 7,
+                    # '到達': self.record.dest_station,
                 }.get(travel_type)
             )
         ):
@@ -71,12 +73,14 @@ class FirstPageFlow:
     def select_date(self, date_type: str) -> str:
         today = date.today()
         last_avail_date = today + timedelta(days=DAYS_BEFORE_BOOKING_AVAILABLE)
-        print(f'選擇{date_type}日期（{today}~{last_avail_date}）（預設為今日）：')
-        return input() or str(today)
+        # print(f'選擇{date_type}日期（{today}~{last_avail_date}）（預設為今日）：')
+        return '2023-01-20'
+        # return input() or str(today)
 
     def select_time(self, time_type: str, default_value: int = 10) -> str:
         if self.record and (
             time_str := {
+                # '啟程': self.record.outbound_time,
                 '啟程': self.record.outbound_time,
                 '回程': None,
             }.get(time_type)
@@ -91,9 +95,11 @@ class FirstPageFlow:
             elif t_int != 1230 and t_str[-1] == "P":
                 t_int += 1200
             t_str = str(t_int)
-            print(f'{idx+1}. {t_str[:-2]}:{t_str[-2:]}')
+            # print(f'{idx+1}. {t_str[:-2]}:{t_str[-2:]}')
 
-        selected_opt = int(input(f'輸入選擇（預設：{default_value}）：') or default_value)
+        # selected_opt = int(input(f'輸入選擇（預設：{default_value}）：') or default_value)
+        selected_opt = int(31)
+        # selected_opt = int(default_value)
         return AVAILABLE_TIME_TABLE[selected_opt-1]
 
     def select_ticket_num(self, ticket_type: TicketType, default_ticket_num: int = 1) -> str:
@@ -117,7 +123,8 @@ class FirstPageFlow:
         }.get(ticket_type)
 
         print(f'選擇{ticket_type_name}票數（0~{MAX_TICKET_NUM}）（預設：{default_ticket_num}）')
-        ticket_num = int(input() or default_ticket_num)
+        # ticket_num = int(input() or default_ticket_num)
+        ticket_num = int(1)
         return f'{ticket_num}{ticket_type.value}'
 
 

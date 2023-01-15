@@ -32,15 +32,17 @@ class ConfirmTicketFlow:
         if self.record and (personal_id := self.record.personal_id):
             return personal_id
 
-        return input(f'輸入身分證字號：\n')
+        # return input(f'輸入身分證字號：\n')
+        return ''
 
     def set_phone_num(self) -> str:
-        if self.record and (phone_num := self.record.phone):
-            return phone_num
-
-        if phone_num := input('輸入手機號碼（預設：""）：\n'):
-            return phone_num
         return ''
+        # if self.record and (phone_num := self.record.phone):
+        #     return phone_num
+        #
+        # if phone_num := input('輸入手機號碼（預設：""）：\n'):
+        #     return phone_num
+        # return ''
 
 
 def _parse_member_radio(page: BeautifulSoup) -> str:
