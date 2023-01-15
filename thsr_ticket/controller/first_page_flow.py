@@ -88,7 +88,7 @@ class FirstPageFlow:
         ):
             return time_str
 
-        print('選擇出發時間：')
+        # print('選擇出發時間：')
         for idx, t_str in enumerate(AVAILABLE_TIME_TABLE):
             t_int = int(t_str[:-1])
             if t_str[-1] == "A" and (t_int // 100) == 12:
@@ -122,7 +122,7 @@ class FirstPageFlow:
             TicketType.COLLEGE: '大學生',
         }.get(ticket_type)
 
-        print(f'選擇{ticket_type_name}票數（0~{MAX_TICKET_NUM}）（預設：{default_ticket_num}）')
+        # print(f'選擇{ticket_type_name}票數（0~{MAX_TICKET_NUM}）（預設：{default_ticket_num}）')
         # ticket_num = int(input() or default_ticket_num)
         ticket_num = int(1) ### 設定成是成人票
         return f'{ticket_num}{ticket_type.value}'
