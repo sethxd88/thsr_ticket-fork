@@ -52,12 +52,14 @@ class FirstPageFlow:
             self.record
             and (
                 station := {
+                    # 1. Nangang 2. Taipei 3. Banqiao 4. Taoyuan 5. Hsinchu 6. Miaoli 7. Taichung 8. Changhua 9. Yunlin 10. Chiayi 11. Tainan 12. Zuouing
                     # '啟程': 2, ### 出發站改這裡
-                    '啟程': 7, ### 出發站改這裡
+                    '啟程': 2, ### 出發站改這裡
                     # '啟程': self.record.start_station,
                     # '到達': 7, ### 到達站改這裡
-                    '到達': 2, ### 到達站改這裡
+                    '到達': 11, ### 到達站改這裡
                     # '到達': self.record.dest_station,
+
                 }.get(travel_type)
             )
         ):
@@ -76,7 +78,7 @@ class FirstPageFlow:
         today = date.today()
         last_avail_date = today + timedelta(days=DAYS_BEFORE_BOOKING_AVAILABLE)
         # print(f'選擇{date_type}日期（{today}~{last_avail_date}）（預設為今日）：')
-        return '2023-01-29' ### 日期改這裡
+        return '2023-02-24' ### 日期改這裡
         # return input() or str(today)
 
     def select_time(self, time_type: str, default_value: int = 10) -> str:
@@ -99,7 +101,7 @@ class FirstPageFlow:
             # print(f'{idx+1}. {t_str[:-2]}:{t_str[-2:]}') ## 要開這句才能看時間
 
         # selected_opt = int(input(f'輸入選擇（預設：{default_value}）：') or default_value)
-        selected_opt = int(31) ### 出發時間改這裡，先開上一句看時間，31 大概是20:30
+        selected_opt = int(28) ### 出發時間改這裡，先開上一句看時間，31 大概是20:30
         return AVAILABLE_TIME_TABLE[selected_opt-1]
 
     def select_ticket_num(self, ticket_type: TicketType, default_ticket_num: int = 1) -> str:
